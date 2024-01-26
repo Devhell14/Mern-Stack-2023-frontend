@@ -2,7 +2,7 @@ import MenubarAdmin from "../../layouts/MenubarAdmin";
 
 const Home = () => {
   return (
-    <div className="container-fluid">
+    <div className="container-fluid my-3">
       <div className="row">
         <div className="col-md-2">
           <MenubarAdmin />

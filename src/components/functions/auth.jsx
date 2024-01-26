@@ -1,14 +1,14 @@
 import axios from "axios";
 
 export const register = async (value) =>
-  await axios.post(import.meta.env.VITE_VERCEL_URL + "/register", value);
+  await axios.post(import.meta.env.VITE_REACT_APP_API_KEY + "/register", value);
 
 export const login = async (value) =>
-  await axios.post(import.meta.env.VITE_VERCEL_URL + "/login", value);
+  await axios.post(import.meta.env.VITE_REACT_APP_API_KEY + "/login", value);
 
 export const currentUser = async (authtoken) =>
   await axios.post(
-    import.meta.env.VITE_VERCEL_URL + "/current-user",
+    import.meta.env.VITE_REACT_APP_API_KEY + "/current-user",
     {},
     {
       headers: {
@@ -19,7 +19,7 @@ export const currentUser = async (authtoken) =>
 
   export const currentAdmin = async (authtoken) =>
   await axios.post(
-    import.meta.env.VITE_VERCEL_URL + "/current-admin",
+    import.meta.env.VITE_REACT_APP_API_KEY + "/current-admin",
     {},
     {
       headers: {

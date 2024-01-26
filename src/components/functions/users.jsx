@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const listUser = async (authtoken) =>
   await axios.get(
-    import.meta.env.VITE_VERCEL_URL + "/users",
+    import.meta.env.VITE_REACT_APP_API_KEY + "/users",
 
     {
       headers: {
@@ -13,7 +13,7 @@ export const listUser = async (authtoken) =>
 
 export const changStatus = async (authtoken, value) =>
   await axios.post(
-    import.meta.env.VITE_VERCEL_URL + "/change-status",
+    import.meta.env.VITE_REACT_APP_API_KEY + "/change-status",
     value,
 
     {
@@ -25,7 +25,7 @@ export const changStatus = async (authtoken, value) =>
 
 export const changRole = async (authtoken, value) =>
   await axios.post(
-    import.meta.env.VITE_VERCEL_URL + "/change-role",
+    import.meta.env.VITE_REACT_APP_API_KEY + "/change-role",
     value,
 
     {
@@ -37,7 +37,7 @@ export const changRole = async (authtoken, value) =>
 
 export const removeUser = async (authtoken, id) =>
   await axios.delete(
-    import.meta.env.VITE_VERCEL_URL + "/users/" + id,
+    import.meta.env.VITE_REACT_APP_API_KEY + "/users/" + id,
 
     {
       headers: {
@@ -48,7 +48,7 @@ export const removeUser = async (authtoken, id) =>
 
 export const resetPassword = async (authtoken, id, values) =>
   await axios.put(
-    import.meta.env.VITE_VERCEL_URL + "/users/" + id,
+    import.meta.env.VITE_REACT_APP_API_KEY + "/users/" + id,
     values,
 
     {

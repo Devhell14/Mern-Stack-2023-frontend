@@ -114,7 +114,7 @@ const ManageAdmin = () => {
   const roleData = ["admin", "user"];
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid my-3">
       <div className="row">
         <div className="col-md-2">
           <MenubarAdmin />
