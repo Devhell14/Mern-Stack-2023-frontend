@@ -2,7 +2,7 @@
 import Register from "./components/pages/auth/Register";
 import Login from "./components/pages/auth/Login";
 import Home from "./components/pages/Home";
-
+ 
 // Layout
 import Navbar from "./components/layouts/Navbar";
 
