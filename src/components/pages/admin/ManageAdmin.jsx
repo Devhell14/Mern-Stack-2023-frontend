@@ -36,7 +36,7 @@ const ManageAdmin = () => {
     setIsModalVisible(false);
     resetPassword(user.token, values.id, { values })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         loadData(user.token);
       })
       .catch((err) => {
@@ -60,7 +60,7 @@ const ManageAdmin = () => {
     };
     changStatus(user.token, value)
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         loadData(user.token);
       })
       .catch((err) => {
@@ -91,7 +91,7 @@ const ManageAdmin = () => {
     changRole(user.token, values)
       .then((res) => {
         loadData(user.token);
-        console.log(res);
+        // console.log(res);
       })
       .catch((err) => {
         console.log(err.response);
@@ -103,7 +103,7 @@ const ManageAdmin = () => {
       removeUser(user.token, id)
         .then((res) => {
           loadData(user.token);
-          console.log(res);
+          // console.log(res);
         })
         .catch((err) => {
           console.log(err.response);

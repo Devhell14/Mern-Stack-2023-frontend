@@ -19,20 +19,20 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(value);
+    // console.log(value);
     if (value.password !== value.password1) {
       toast.error("Password not match");
     } else {
       //code
       register(value)
         .then((res) => {
-          console.log(res.data);
+          // console.log(res.data);
           toast.success(res.data);
           navigate("/Login");
 
         })
         .catch((err) => {
-          console.log(err.response.data);
+          // console.log(err.response.data);
           toast.error(err.response.data);
         });
     }
