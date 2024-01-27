@@ -19,7 +19,7 @@ export const currentUser = async (authtoken) =>
 
   export const currentAdmin = async (authtoken) =>
   await axios.post(
-    import.meta.env.VITE_VERCEL_URL + "/current-admin",
+    import.meta.env.VITE_VERCEL_URL + "/api/current-admin",
     {},
     {
       headers: {
