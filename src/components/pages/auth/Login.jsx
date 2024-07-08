@@ -19,7 +19,6 @@ const Login = () => {
   const [value, setValue] = useState({
     username: "",
     password: "",
-    password1: "",
   });
 
   // Check Admin & User
