@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { login } from "../../functions/auth";
-import { Spin } from 'antd';
+import { Spin } from "antd";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -23,7 +23,7 @@ const Login = () => {
 
   // Check Admin & User
   const roleBaseRedirect = (role) => {
-    if(role === "admin") {
+    if (role === "admin") {
       navigate("/admin/index");
     } else {
       navigate("/user/index");
@@ -36,6 +36,11 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    // Check for empty fields
+    if (!value.username || !value.password) {
+      toast.error("All fields are required");
+      return;
+    }
     setLoading(true); // Start loading
 
     login(value)
