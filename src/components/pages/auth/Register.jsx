@@ -22,7 +22,9 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (value.password !== value.password1) {
+    if (!value.username || !value.password || !value.password1) {
+      toast.error("All fields are required");
+    } else if (value.password !== value.password1) {
       toast.error("Passwords do not match");
     } else {
       setLoading(true); // Start loading
