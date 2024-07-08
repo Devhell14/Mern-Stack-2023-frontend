@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { login } from "../../functions/auth";
+import { Spin } from 'antd';
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
@@ -8,11 +9,8 @@ import { logins } from "../../reducers/userSlice";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-
   // State
   const { user } = useSelector((state) => state.user);
-
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,15 +19,16 @@ const Login = () => {
     password: "",
   });
 
+  const [loading, setLoading] = useState(false); // Loading state
+
   // Check Admin & User
   const roleBaseRedirect = (role) => {
-    // console.log(role);
     if(role === "admin") {
-      navigate("/admin/index")
+      navigate("/admin/index");
     } else {
-      navigate("/user/index")
+      navigate("/user/index");
     }
-  }
+  };
 
   const handleChange = (e) => {
     setValue({ ...value, [e.target.name]: e.target.value });
@@ -37,13 +36,10 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(value);
+    setLoading(true); // Start loading
 
-    //code
     login(value)
       .then((res) => {
-        // console.log(res.data);
-        // toast.success(res.data.payload.user.username + " Login Success");
         toast.success("Login Success");
         dispatch(
           logins({
@@ -55,10 +51,12 @@ const Login = () => {
 
         localStorage.setItem("token", res.data.token);
         roleBaseRedirect(res.data.payload.user.role);
+        setLoading(false); // Stop loading on success
       })
       .catch((err) => {
         console.log(err.response.data);
         toast.error(err.response.data);
+        setLoading(false); // Stop loading on error
       });
   };
 
@@ -67,31 +65,31 @@ const Login = () => {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h1 className="text-center mb-5">Login Page</h1>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              {/* <label>Username</label> */}
-              <input
-                className="form-control mb-2"
-                placeholder="Username"
-                type="text"
-                name="username"
-                onChange={handleChange}
-              />
-            </div>
-            <div className="form-group">
-              {/* <label>Password</label> */}
-              <input
-                className="form-control mb-2"
-                placeholder="Password"
-                type="password"
-                name="password"
-                onChange={handleChange}
-              />
-            </div>
-            <button type="submit" className="btn btn-success my-2 w-100">
-              Login
-            </button>
-          </form>
+          <Spin spinning={loading}>
+            <form onSubmit={handleSubmit}>
+              <div className="form-group">
+                <input
+                  className="form-control mb-2"
+                  placeholder="Username"
+                  type="text"
+                  name="username"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="form-group">
+                <input
+                  className="form-control mb-2"
+                  placeholder="Password"
+                  type="password"
+                  name="password"
+                  onChange={handleChange}
+                />
+              </div>
+              <button type="submit" className="btn btn-success my-2 w-100">
+                Login
+              </button>
+            </form>
+          </Spin>
         </div>
       </div>
     </div>
