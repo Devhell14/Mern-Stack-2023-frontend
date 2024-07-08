@@ -44,7 +44,7 @@ const Register = () => {
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <h1 className="text-center mb-5">Register</h1>
-          <Spin spinning={loading}>
+          <Spin spinning={loading} size="large">
             <form onSubmit={handleSubmit}>
               <div className="form-group">
                 <input
